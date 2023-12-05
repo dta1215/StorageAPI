@@ -1,0 +1,28 @@
+﻿name: My .NET Action
+
+on:
+  push:
+    branches: [ dev ]
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    defaults:
+      run:
+        shell: cmd
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    #- name: Test
+    #  run: dotnet test --no-build --verbosity normal
+    - name: Stop StorageAPI
+      run: appcmd stop sites "StorageAPI"
+    - name: Publish Release
+      run: dotnet publish StorageAPI --configuration Release -o D:\Company (Main2)\.NET core thực hành CI CD\IIS publish
+    - name: Start StorageAPI
+      run: appcmd start sites "StorageAPI"

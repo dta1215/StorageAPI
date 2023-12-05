@@ -10,7 +10,7 @@ jobs:
 
     defaults:
       run:
-        shell: cmd
+        shell: appcmd
 
     steps:
     - uses: actions/checkout@v3

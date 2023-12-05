@@ -12,10 +12,16 @@ namespace StorageAPI.Controllers
         {
             var locations = new string[]
             {
-                "Locate 1", "Locate 2" 
+                "Locate 1", "Locate 2"
             };
 
             return Ok(locations);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddLocation(string locationName)
+        {
+            return Ok();
         }
     }
 }

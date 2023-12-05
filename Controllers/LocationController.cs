@@ -12,7 +12,7 @@ namespace StorageAPI.Controllers
         {
             var locations = new string[]
             {
-                "Locate 1", "Locate 2"
+                "Locate 1", "Locate 2" 
             };
 
             return Ok(locations);

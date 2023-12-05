@@ -21,8 +21,8 @@ jobs:
     #- name: Test
     #  run: dotnet test --no-build --verbosity normal
     - name: Stop StorageAPI
-      run: appcmd stop sites "StorageAPI"
+      run: appcmd stop sites StorageAPI
     - name: Publish Release
       run: dotnet publish StorageAPI --configuration Release -o D:\Company (Main2)\.NET core thực hành CI CD\IIS publish
     - name: Start StorageAPI
-      run: appcmd start sites "StorageAPI"
+      run: appcmd start sites StorageAPI

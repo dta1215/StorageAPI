@@ -10,7 +10,7 @@ jobs:
 
     defaults:
       run:
-        shell: appcmd
+        shell: cmd
 
     steps:
     - uses: actions/checkout@v3
@@ -21,8 +21,10 @@ jobs:
     #- name: Test
     #  run: dotnet test --no-build --verbosity normal
     - name: Stop StorageAPI
-      run: appcmd stop sites StorageAPI
+      run: |
+          %systemroot%\system32\inetsrv\appcmd.exe stop sites /site.name:StorageAPI
     - name: Publish Release
       run: dotnet publish StorageAPI --configuration Release -o D:\Company (Main2)\.NET core thực hành CI CD\IIS publish
     - name: Start StorageAPI
-      run: appcmd start sites StorageAPI
+      run: |
+          %systemroot%\system32\inetsrv\appcmd.exe start sites /site.name:StorageAPI

@@ -4,6 +4,11 @@ on:
   push:
     branches: [ dev ]
 
+env:
+  ProjectName: StorageAPI
+  IIS_site_name: site.name:$ProjectName
+  IIS_pool_name: apppool.name:$ProjectName
+
 jobs:
   build:
     runs-on: self-hosted
@@ -22,9 +27,11 @@ jobs:
     #  run: dotnet test --no-build --verbosity normal
     - name: Stop StorageAPI
       run: |
-          %systemroot%\system32\inetsrv\appcmd.exe stop sites /site.name:StorageAPI
+            %systemroot%\system32\inetsrv\appcmd.exe stop sites /$IIS_site_name
+            %systemroot%\system32\inetsrv\appcmd.exe stop apppool /$IIS_pool_name
     - name: Publish Release
       run: dotnet publish StorageAPI.csproj --configuration Release --output "D:\Company (Main2)\.NET core thực hành CI CD\IIS publish"
     - name: Start StorageAPI
       run: |
-          %systemroot%\system32\inetsrv\appcmd.exe start sites /site.name:StorageAPI
+            %systemroot%\system32\inetsrv\appcmd.exe start sites /$IIS_site_name
+            %systemroot%\system32\inetsrv\appcmd.exe start apppool /$IIS_pool_name

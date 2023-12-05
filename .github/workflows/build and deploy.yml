@@ -20,10 +20,6 @@ jobs:
       run: dotnet build --no-restore
     #- name: Test
     #  run: dotnet test --no-build --verbosity normal
-    - name: To AppCMD
-      run: cd C:\windows\system32\inetsrv
-    - name: Run AppCMD
-      run: appcmd
     - name: Stop StorageAPI
       run: appcmd stop sites StorageAPI
     - name: Publish Release

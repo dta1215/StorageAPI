@@ -24,7 +24,8 @@ jobs:
       run: |
           %systemroot%\system32\inetsrv\appcmd.exe stop sites /site.name:StorageAPI
     - name: Publish Release
-      run: dotnet publish StorageAPI --configuration Release -o D:\Company (Main2)\.NET core thực hành CI CD\IIS publish
+      run: |
+          dotnet publish StorageAPI --configuration Release -o 'D:\Company (Main2)\.NET core thực hành CI CD\IIS publish'
     - name: Start StorageAPI
       run: |
           %systemroot%\system32\inetsrv\appcmd.exe start sites /site.name:StorageAPI

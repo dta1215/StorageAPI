@@ -23,11 +23,12 @@ jobs:
     #  run: dotnet test --no-build --verbosity normal
     - name: Stop StorageAPI
       run: |
-            %systemroot%\system32\inetsrv\appcmd.exe stop sites /site.name:StorageAPI
             %systemroot%\system32\inetsrv\appcmd.exe stop apppool /apppool.name:StorageAPI
+            %systemroot%\system32\inetsrv\appcmd.exe stop sites /site.name:StorageAPI
+
     - name: Publish Release
       run: dotnet publish StorageAPI.csproj --configuration Release --output "D:\Company (Main2)\.NET core thực hành CI CD\IIS publish"
     - name: Start StorageAPI
       run: |
-            %systemroot%\system32\inetsrv\appcmd.exe start sites /site.name:StorageAPI
             %systemroot%\system32\inetsrv\appcmd.exe start apppool /apppool.name:StorageAPI
+            %systemroot%\system32\inetsrv\appcmd.exe start sites /site.name:StorageAPI
